@@ -4,6 +4,10 @@ export const Container = styled.div`
   width: 718px;
   position: relative;
 
+  @media(max-width: 768px) {
+    width: 100%;
+  }
+
   > input {
     display: block;
     width: 100%;

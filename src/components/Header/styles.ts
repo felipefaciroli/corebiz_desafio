@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const Content = styled.header`
-  
+  @media(max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const Container = styled.div`

@@ -12,6 +12,16 @@ export const Container = styled.div`
     color: #7A7A7A;
     margin-left: 30px;
 
+    @media(max-width: 768px) {
+      margin: 0;
+    }
+
+    &.user {
+      @media(max-width: 768px) {
+        display: none;
+      }
+    }
+
     > svg {
       margin-right: 5px;
     }

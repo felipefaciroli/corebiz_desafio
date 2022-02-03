@@ -13,9 +13,20 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 0 15px;
   color: #FFF;
+
+  @media(max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 export const Locale = styled.div`
+  @media(max-width: 768px) {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
   > h5 {
     font-weight: 700;
     font-size: 20px;
@@ -46,6 +57,11 @@ export const Contact = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media(max-width: 768px) {
+    width: 100%;
+    margin-bottom: 30px;
+  }
 
   > a {
     display: flex;
@@ -79,9 +95,18 @@ export const Tecnologies = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  @media(max-width: 768px) {
+    width: 100%;
+    padding: 0 30px;
+  }
+
   > a {
     display: block;
     margin-left: 25px;
+
+    @media(max-width: 768px) {
+      margin: 0;
+    }
 
     > span {
       display: block;

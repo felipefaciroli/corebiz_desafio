@@ -8,6 +8,10 @@ export const Container = styled.div`
   width: ${props => props.theme.container};
   margin: 0 auto;
   padding: 0 15px;
+
+  @media(max-width: 768px) {
+    width: 100%;
+  }
   
   > h2 {
     display: block;
@@ -28,17 +32,38 @@ export const Container = styled.div`
 `;
 
 export const ListProducts = styled.div`
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 40px;
+
+  .slick-dots {
+    li {
+      &.slick-active {
+        button {
+          background: #F8475F;
+        }
+      }
+
+      button {
+        width: 10px;
+        height: 10px;
+        padding: 0;
+        background: #BDBDBD;
+        border-radius: 50%;
+
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
 `;
 
 export const ProductItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 216px;
-  margin-bottom: 20px;
+  width: 200px;
+  margin: 0 0 20px 0;
+  padding: 20px;
 
   &:hover {
     button {
@@ -53,6 +78,18 @@ export const ProductItem = styled.div`
 
 export const ProductImage = styled.div`
   margin-bottom: 7px;
+  position: relative;
+
+  .flag-discount {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    > svg {
+      width: 90px;
+      height: 80px;
+    }
+  }
 
   > a {
     display: block;
@@ -82,6 +119,7 @@ export const ProductName = styled.h3`
 `;
 
 export const ProductRating = styled.div`
+  
 `;
 
 export const ProductPricing = styled.div`
@@ -111,6 +149,14 @@ export const ProductPricing = styled.div`
     > em {
       font-style: normal;
       padding-right: 5px;
+    }
+  }
+
+  .installments {
+    height: 22px;
+
+    > span {
+      display: block;
     }
   }
 `;
