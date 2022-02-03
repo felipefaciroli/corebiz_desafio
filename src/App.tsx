@@ -1,8 +1,19 @@
-import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import GlobalStyles from './styles/global';
+import Header from './components/Header';
+
+import theme from './styles/theme';
+import MainBanner from './components/MainBanner';
+import Shelf from './components/Shelf';
 
 function App() {
   return (
-    <h1>Home</h1>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Header />
+      <MainBanner />
+      <Shelf />
+    </ThemeProvider>
   );
 }
 
