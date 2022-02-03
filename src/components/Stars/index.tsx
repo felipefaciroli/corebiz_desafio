@@ -9,7 +9,7 @@ interface IStars {
 }
 
 const Stars: React.FC<IStars> = ({ quantity }) => {
-  const [sts, setSts] = useState([1, 2, 3, 4, 5]);
+  const [sts] = useState([1, 2, 3, 4, 5]);
 
   return (
     <Container>
