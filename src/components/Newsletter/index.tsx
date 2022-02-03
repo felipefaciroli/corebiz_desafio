@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Swal from 'sweetalert2';
 import api from '../../config/api';
 import validateMail from '../../utils/validateMail';
 
