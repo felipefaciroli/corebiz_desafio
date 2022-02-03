@@ -1,10 +1,13 @@
 import { ThemeProvider } from 'styled-components';
-import GlobalStyles from './styles/global';
-import Header from './components/Header';
 
+import GlobalStyles from './styles/global';
 import theme from './styles/theme';
+
+import Header from './components/Header';
 import MainBanner from './components/MainBanner';
 import Shelf from './components/Shelf';
+import Newsletter from './components/Newsletter';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -13,6 +16,8 @@ function App() {
       <Header />
       <MainBanner />
       <Shelf />
+      <Newsletter />
+      <Footer />
     </ThemeProvider>
   );
 }

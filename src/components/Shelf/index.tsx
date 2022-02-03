@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 import {
   Content,
@@ -6,13 +7,17 @@ import {
   ListProducts,
   ProductItem,
   ProductImage,
+  ProductInfo,
   ProductName,
   ProductRating,
   ProductPricing,
   ProductButton
 } from './styles';
+
 import api from '../../config/api';
+
 import Stars from '../Stars';
+
 import formatCurrency from '../../utils/formatCurrency';
 
 interface IProduct {
@@ -40,11 +45,32 @@ const Shelf: React.FC = () => {
   const getProducts = async () => {
     const { data } = await api.get('/products');
 
-    console.log(data);
-
     if (data.length > 0) {
       setProducts(data);
     }
+  }
+
+  const addToCart = (product: any) => {
+    const storageCart = localStorage.getItem('@corebiz:cart') || '';
+
+    var list = [];
+
+    if (storageCart) {
+      list = JSON.parse(storageCart);
+    }
+
+    if (!list.find((item: any) => item.productId === product.productId)) {
+      list.push(product);
+      localStorage.setItem('@corebiz:cart', JSON.stringify(list));
+    }
+
+    Swal.fire(
+      'Parabéns!',
+      'Produto adicionado ao carrinho',
+      'success'
+    ).then(() => {
+      window.location.reload();
+    })
   }
 
   return (
@@ -55,11 +81,13 @@ const Shelf: React.FC = () => {
         <ListProducts>
           {products && products.length > 0 && products.map((product) => (
             <ProductItem key={product.productId}>
-              <a href="#">
-                <ProductImage>
+              <ProductImage>
+                <a href="#">
                   <img src={product.imageUrl} alt={product.productName} />
-                </ProductImage>
+                </a>
+              </ProductImage>
 
+              <ProductInfo>
                 <ProductName>{product.productName}</ProductName>
 
                 <ProductRating>
@@ -80,14 +108,14 @@ const Shelf: React.FC = () => {
                     <span>{formatCurrency(product.price / 100)}</span>
                   </div>
                   {/* {product.installments.map((inst, i) => (
-                    <div key={i} className="installments">
-                      <span>ou em {product.installments[0].quantity}x de {product.installments[0].value}</span>
-                    </div>
-                  ))} */}
+                      <div key={i} className="installments">
+                        <span>ou em {product.installments[0].quantity}x de {product.installments[0].value}</span>
+                      </div>
+                    ))} */}
                 </ProductPricing>
 
-                <ProductButton>Comprar</ProductButton>
-              </a>
+                <ProductButton onClick={() => addToCart(product)}>Comprar</ProductButton>
+              </ProductInfo>
             </ProductItem>
           ))}
         </ListProducts>

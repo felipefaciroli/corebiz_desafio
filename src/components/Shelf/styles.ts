@@ -30,21 +30,23 @@ export const Container = styled.div`
 export const ListProducts = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 40px;
 `;
 
 export const ProductItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 216px;
   margin-bottom: 20px;
-  
-  > a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
-    &:hover {
-      button {
-        visibility: visible;
-      }
+  &:hover {
+    button {
+      visibility: visible;
+    }
+
+    > div {
+      background-color: #E6E8EA;
     }
   }
 `;
@@ -52,10 +54,21 @@ export const ProductItem = styled.div`
 export const ProductImage = styled.div`
   margin-bottom: 7px;
 
-  > img {
+  > a {
     display: block;
-    width: 100%;
+    > img {
+      display: block;
+      width: 100%;
+    }
   }
+`;
+
+export const ProductInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 15px 0;
 `;
 
 export const ProductName = styled.h3`
